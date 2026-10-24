@@ -2,7 +2,7 @@
   "name": "study-room-pomodoro",
   "version": "1.0.0",
   "private": true,
-  "description": "A real-time study room with a shared Pomodoro timer and chat.",
+  "description": "A real-time study room with a shared Pomodoro timer and chat",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
