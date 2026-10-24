@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>Study Room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/js/client.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Study Room home">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>study<span class="brand-light">room</span></span>
+      </a>
+      <div class="room-status"><span class="status-dot"></span><span>Shared room</span></div>
+    </header>
+
+    <main class="workspace">
+      <section class="focus-panel" aria-labelledby="focus-heading">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR FOCUS SESSION</div>
+        <h1 id="focus-heading">Make space for<br><span>deep work.</span></h1>
+        <p class="intro">A little progress, made together.</p>
+
+        <div class="timer-card">
+          <div class="timer-topline">
+            <span class="session-label"><span class="session-icon">◷</span> Focus session</span>
+            <span class="sync-label"><span class="sync-dot"></span> Synced</span>
+          </div>
+          <div class="timer-display" id="timer" role="timer" aria-live="off">25:00</div>
+          <p class="timer-caption" id="timer-caption">Ready when you are</p>
+          <div class="timer-controls" aria-label="Timer controls">
+            <button class="button button-primary" id="start-button" type="button">
+              <span aria-hidden="true">▶</span> Start
+            </button>
+            <button class="button button-secondary" id="pause-button" type="button">
+              <span aria-hidden="true">Ⅱ</span> Pause
+            </button>
+            <button class="button button-reset" id="reset-button" type="button" aria-label="Reset timer" title="Reset timer">↺</button>
+          </div>
+          <div class="timer-footnote"><span aria-hidden="true">⌁</span> Everyone in the room shares this timer</div>
+        </div>
+
+        <div class="focus-note">
+          <span class="note-icon" aria-hidden="true">✦</span>
+          <p><strong>One thing at a time.</strong><br>Stay present, take a breath, and keep going.</p>
+        </div>
+      </section>
+
+      <section class="chat-panel" aria-labelledby="chat-heading">
+        <div class="chat-header">
+          <div>
+            <div class="chat-title-row"><h2 id="chat-heading">Study chat</h2><span class="live-pill"><span></span> LIVE</span></div>
+            <p class="chat-subtitle">A quiet corner to check in.</p>
+          </div>
+          <button class="theme-button" id="theme-button" type="button" aria-label="Toggle dark theme" title="Toggle theme">◐</button>
+        </div>
+
+        <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions">
+          <div class="welcome-message" id="welcome-message">
+            <span class="welcome-sparkle" aria-hidden="true">✳</span>
+            <strong>Welcome to the room</strong>
+            <span>Say hello, share a goal, or just get started.</span>
+          </div>
+        </div>
+
+        <form class="chat-form" id="chat-form">
+          <label class="sr-only" for="message-input">Write a message</label>
+          <input id="message-input" name="message" type="text" maxlength="1000" placeholder="Send a message..." autocomplete="off">
+          <button class="send-button" type="submit" aria-label="Send message" title="Send message"><span aria-hidden="true">↑</span></button>
+        </form>
+        <div class="chat-footer"><span>Be kind to your fellow studiers</span><span class="enter-hint">ENTER ↵</span></div>
+      </section>
+    </main>
+    <footer class="page-footer"><span>Made for showing up.</span><span class="footer-mark">✳</span></footer>
+  </div>
+
+  <dialog class="name-dialog" id="name-dialog" aria-labelledby="name-heading">
+    <form method="dialog" id="name-form">
+      <div class="dialog-mark" aria-hidden="true">✳</div>
+      <p class="eyebrow dialog-eyebrow">PULL UP A CHAIR</p>
+      <h2 id="name-heading">What should we<br>call you?</h2>
+      <p class="dialog-copy">Pick a name for your study room session.</p>
+      <label class="sr-only" for="username-input">Your name</label>
+      <input id="username-input" type="text" maxlength="24" placeholder="Your name" autocomplete="nickname" required>
+      <button class="button button-primary join-button" id="join-button" type="submit">Join the room <span aria-hidden="true">→</span></button>
+      <button class="guest-button" id="guest-button" type="button">Continue as Guest</button>
+    </form>
+  </dialog>
+</body>
+</html>
